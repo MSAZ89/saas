@@ -80,7 +80,6 @@ function EditItemModal(props) {
           <Grid container={true} spacing={3}>
             <Grid item={true} xs={12}>
               <TextField
-                mb={3}
                 variant="outlined"
                 type="text"
                 label="Name"
@@ -107,6 +106,21 @@ function EditItemModal(props) {
                 fullWidth={true}
                 inputRef={register({
                   required: "Please enter a description",
+                })}
+              />
+              <Box my={2}></Box>
+              <TextField
+                variant="outlined"
+                multiline={true}
+                type="url"
+                label="Url"
+                name="url"
+                defaultValue={itemData && itemData.url}
+                error={errors.url ? true : false}
+                helperText={errors.url && errors.url.message}
+                fullWidth={true}
+                inputRef={register({
+                  required: "Please enter a url",
                 })}
               />
             </Grid>

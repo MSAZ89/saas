@@ -18,6 +18,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import EditItemModal from "components/EditItemModal";
 import { useAuth } from "util/auth";
 import { updateItem, deleteItem, useItemsByOwner } from "util/db";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
   paperItems: {
@@ -59,19 +60,6 @@ function DashboardItems(props) {
     }
   };
 
-  //function to sort current items by by name a to z NOT WORKING
-  const sortItems = (items) => {
-    items.sort((a, b) => {
-      if (a.name < b.name) {
-        return -1;
-      }
-      if (a.name > b.name) {
-        return 1;
-      }
-      return 0;
-    });
-  };
-
   return (
     <>
       {itemsError && (
@@ -79,8 +67,6 @@ function DashboardItems(props) {
           <Alert severity="error">{itemsError.message}</Alert>
         </Box>
       )}
-      {/*FILTER BUTTON NOT WORKING!*/}
-      <button onClick={() => sortItems(items)}>Sort</button>
       <Paper className={classes.paperItems}>
         <Box
           display="flex"
@@ -124,12 +110,27 @@ function DashboardItems(props) {
                     width: "90%",
                   }}
                 >
+                  {/*Item Text Starts*/}
                   <ListItemText
-                    primaryTypographyProps={{ style: { fontSize: "1.3rem" } }}
+                    primaryTypographyProps={{ style: { fontSize: "1.1rem" } }}
                   >
                     {item.name}
+                    {item.url && (
+                      <>
+                        {" - "}
+                        <Link
+                          target={"_blank"}
+                          rel="noreferrer"
+                          href={item.url}
+                        >
+                          {item.url}
+                        </Link>
+                      </>
+                    )}
                   </ListItemText>
+
                   <ListItemText>{item.description}</ListItemText>
+                  {/*Item Text End*/}
                 </Box>
                 <Box sx={{ width: "auto" }}>
                   <IconButton
