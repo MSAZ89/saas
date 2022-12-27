@@ -93,8 +93,12 @@ function DashboardItems(props) {
             Add Link
           </Button>
         </Box>
-        <Button onClick={toggleNsfwFilter}>
-          {nsfwFilter ? "Show NSFW" : "Hide NSFW"}
+        <Button
+          size="small"
+          style={nsfwFilter ? { background: "green" } : { background: "red" }}
+          onClick={toggleNsfwFilter}
+        >
+          {nsfwFilter ? "Hide NSFW" : "Show NSFW"}
         </Button>
 
         <Divider />
