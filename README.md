@@ -8,6 +8,9 @@ This project uses the following libraries and services:
 - Database - [Supabase](https://supabase.com)
 - Hosting - [Vercel](https://vercel.com)
 
+## 🔗 Project Link
+- https://linkbox-nu.vercel.app/dashboard
+
 ## 📚 Guide
 
 <details>
