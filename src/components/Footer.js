@@ -87,8 +87,8 @@ function Footer(props) {
             </div>
           </Grid>
           <Grid item={true} xs={12} md={6}>
-            <Grid container={true} spacing={4}>
-              <Grid item={true} xs={12} md={4}>
+            <Grid container={true} spacing={6}>
+              <Grid item={true} xs={12} md={6}>
                 <List disablePadding={true}>
                   <ListItem className={classes.listItem}>
                     <Typography
@@ -118,7 +118,7 @@ function Footer(props) {
                   </Link>
                 </List>
               </Grid>
-              <Grid item={true} xs={12} md={4}>
+              <Grid item={true} xs={12} md={6}>
                 <List disablePadding={true}>
                   <ListItem className={classes.listItem}>
                     <Typography
@@ -155,57 +155,6 @@ function Footer(props) {
                     className={classes.listItem}
                   >
                     <ListItemText>Blog</ListItemText>
-                  </ListItem>
-                </List>
-              </Grid>
-              <Grid item={true} xs={12} md={4}>
-                <List disablePadding={true}>
-                  <ListItem className={classes.listItem}>
-                    <Typography
-                      variant="overline"
-                      className={classes.listItemTextHeader}
-                    >
-                      Social
-                    </Typography>
-                  </ListItem>
-                  <ListItem
-                    button={true}
-                    component="a"
-                    href="https://twitter.com/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className={classes.listItem}
-                  >
-                    <ListItemIcon className={classes.socialIcon}>
-                      <img src="#" alt="Facebook" />
-                    </ListItemIcon>
-                    <ListItemText>Twitter</ListItemText>
-                  </ListItem>
-                  <ListItem
-                    button={true}
-                    component="a"
-                    href="https://facebook.com/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className={classes.listItem}
-                  >
-                    <ListItemIcon className={classes.socialIcon}>
-                      <img src="#" alt="Facebook" />
-                    </ListItemIcon>
-                    <ListItemText>Facebook</ListItemText>
-                  </ListItem>
-                  <ListItem
-                    button={true}
-                    component="a"
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className={classes.listItem}
-                  >
-                    <ListItemIcon className={classes.socialIcon}>
-                      <img src="#" />
-                    </ListItemIcon>
-                    <ListItemText>Instagram</ListItemText>
                   </ListItem>
                 </List>
               </Grid>

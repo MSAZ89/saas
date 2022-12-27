@@ -93,14 +93,26 @@ function DashboardItems(props) {
             Add Link
           </Button>
         </Box>
-        <Button
-          size="small"
-          style={nsfwFilter ? { background: "green" } : { background: "red" }}
-          onClick={toggleNsfwFilter}
-        >
-          {nsfwFilter ? "Hide NSFW" : "Show NSFW"}
-        </Button>
 
+        <Box
+          display="flex"
+          justifyContent="start"
+          gridGap={"40px"}
+          alignItems="center"
+          padding={2}
+        >
+          <Button
+            size="small"
+            style={
+              nsfwFilter
+                ? { background: "green", color: "white" }
+                : { background: "red", color: "white" }
+            }
+            onClick={toggleNsfwFilter}
+          >
+            {nsfwFilter ? "Hide NSFW" : "Show NSFW"}
+          </Button>
+        </Box>
         <Divider />
 
         {(itemsStatus === "loading" || itemsAreEmpty) && (
@@ -147,6 +159,13 @@ function DashboardItems(props) {
                             </span>
                           )}
                         </ListItemText>
+                        <Link
+                          href={item.url}
+                          target="_blank"
+                          rel={"noreferrer"}
+                        >
+                          {item.url}
+                        </Link>
                         {/*Item Text Ends*/}
                         {/*Item Secondary Action Starts*/}
                         <ListItemSecondaryAction>
@@ -265,6 +284,13 @@ function DashboardItems(props) {
                               <DeleteIcon />
                             </IconButton>
                           </ListItemSecondaryAction>
+                          <Link
+                            href={item.url}
+                            target="_blank"
+                            rel={"noreferrer"}
+                          >
+                            {item.url}
+                          </Link>
                           {/*Item Secondary Action Ends*/}
                         </Box>
                         {/*Item Link Starts*/}
