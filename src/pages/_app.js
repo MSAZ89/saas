@@ -13,8 +13,8 @@ function MyApp({ Component, pageProps }) {
           <>
             <Navbar
               color="default"
-              logo="https://uploads.divjoy.com/logo.svg"
-              logoInverted="https://uploads.divjoy.com/logo-white.svg"
+              logo="/linkboxlogo-dark.png"
+              logoInverted="/linkboxlogo-light.png"
             />
 
             <Component {...pageProps} />
@@ -24,10 +24,10 @@ function MyApp({ Component, pageProps }) {
               size="medium"
               bgImage=""
               bgImageOpacity={1}
-              description="A short description of what you do here"
+              description="A place to store links."
               copyright={`© ${new Date().getFullYear()} Company`}
-              logo="https://uploads.divjoy.com/logo.svg"
-              logoInverted="https://uploads.divjoy.com/logo-white.svg"
+              logo="/linkboxlogo-dark.png"
+              logoInverted="/linkboxlogo-light.png"
               sticky={true}
             />
           </>

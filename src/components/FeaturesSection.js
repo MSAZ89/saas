@@ -33,23 +33,23 @@ function FeaturesSection(props) {
 
   const items = [
     {
-      title: "Lorem Ipsum",
-      body: "Integer ornare neque mauris, ac vulputate lacus venenatis et. Pellentesque ut ultrices purus.",
+      title: "Save A link",
+      body: "Save a link to your collection. Filter links by NSFW, tags, and more.",
       image: "https://uploads.divjoy.com/undraw-fish_bowl_uu88.svg",
     },
     {
-      title: "Lorem Ipsum",
-      body: "Nunc nulla mauris, laoreet vel cursus lacinia, consectetur sit amet tellus.",
+      title: "Share A Link",
+      body: "Share a link with your friends. You can also share a link with a group of friends.",
       image: "https://uploads.divjoy.com/undraw-directions_x53j.svg",
     },
     {
-      title: "Lorem Ipsum",
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lobortis, metus et mattis ullamcorper",
+      title: "Favorite Links",
+      body: "Favorite links to save them for later.",
       image: "https://uploads.divjoy.com/undraw-stability_ball_b4ia.svg",
     },
     {
-      title: "Lorem Ipsum",
-      body: "Suspendisse ut tincidunt eros. In velit mi, rhoncus dictum neque a, tincidunt lobortis justo",
+      title: "Write A Note About A Link",
+      body: "Write a note about a link to help you remember what it's about.",
       image: "https://uploads.divjoy.com/undraw-personal_settings_kihd.svg",
     },
   ];

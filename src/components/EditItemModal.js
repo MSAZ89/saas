@@ -12,12 +12,24 @@ import { useForm } from "react-hook-form";
 import { makeStyles } from "@material-ui/core/styles";
 import { useAuth } from "util/auth";
 import { useItem, updateItem, createItem } from "util/db";
+import { MenuItem } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   content: {
     paddingBottom: 24,
   },
 }));
+
+const nsfw = [
+  {
+    value: "true",
+    label: "Yes",
+  },
+  {
+    value: "false",
+    label: "No",
+  },
+];
 
 function EditItemModal(props) {
   const classes = useStyles();
@@ -67,7 +79,7 @@ function EditItemModal(props) {
       <DialogTitle>
         {props.id && <>Update</>}
         {!props.id && <>Create</>}
-        {` `}Item
+        {` `}Link
       </DialogTitle>
       <DialogContent className={classes.content}>
         {formAlert && (
@@ -104,14 +116,12 @@ function EditItemModal(props) {
                 error={errors.description ? true : false}
                 helperText={errors.description && errors.description.message}
                 fullWidth={true}
-                inputRef={register({
-                  required: "Please enter a description",
-                })}
+                inputRef={register({})}
               />
               <Box my={2}></Box>
               <TextField
                 variant="outlined"
-                multiline={true}
+                multiline={false}
                 type="url"
                 label="Url"
                 name="url"
@@ -120,9 +130,27 @@ function EditItemModal(props) {
                 helperText={errors.url && errors.url.message}
                 fullWidth={true}
                 inputRef={register({
-                  required: "Please enter a url",
+                  required: "Please enter a valid url",
                 })}
               />
+
+              <Box my={2}></Box>
+              <TextField
+                id="outlined-select-currency"
+                label="SFW"
+                type="select"
+                name="sfw"
+                defaultValue={itemData && itemData.sfw}
+                error={errors.sfw ? true : false}
+                helperText="Is this safe for work?"
+                inputRef={register()}
+              >
+                {nsfw.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
             </Grid>
             <Grid item={true} xs={12}>
               <Button

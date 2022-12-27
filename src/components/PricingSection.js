@@ -52,37 +52,36 @@ function PricingSection(props) {
     {
       id: "starter",
       name: "Starter",
-      price: "10",
-      perks: [
-        "Lorem ipsum dolor sit amet",
-        "Consectetur adipiscing elit",
-        "Integer molestie lorem at massa",
-      ],
+      price: "0",
+      perks: ["Store Links", "Favorite Links", "Filter Links By NSFW Content"],
     },
     {
       id: "pro",
       name: "Pro",
       price: "20",
       perks: [
-        "Lorem ipsum dolor sit amet",
-        "Consectetur adipiscing elit",
-        "Integer molestie lorem at massa",
-        "Faucibus porta lacus fringilla vel",
-        "Aenean sit amet erat nunc",
+        "Store Links",
+        "Favorite Links",
+        "Filter Links By NSFW Content",
+        "Create Custom Categories",
+        "Create Custom Tags",
+        "Create Custom Filters",
       ],
     },
     {
-      id: "business",
-      name: "Business",
+      id: "expert",
+      name: "Expert",
       price: "50",
       perks: [
-        "Lorem ipsum dolor sit amet",
-        "Consectetur adipiscing elit",
-        "Integer molestie lorem at massa",
-        "Faucibus porta lacus fringilla vel",
-        "Aenean sit amet erat nunc",
-        "Lorem ipsum dolor sit amet",
-        "Consectetur adipiscing elit",
+        "Store Links",
+        "Favorite Links",
+        "Filter Links By NSFW Content",
+        "Create Custom Categories",
+        "Create Custom Tags",
+        "Create Custom Filters",
+        "Create Custom Link Fields",
+        "Create Custom Link Field Types",
+        "Create Custom Link Field Options",
       ],
     },
   ];
@@ -159,7 +158,7 @@ function PricingSection(props) {
                         size="large"
                         fullWidth={true}
                       >
-                        Choose
+                        Choose Plan
                       </Button>
                     </Link>
                   </Box>

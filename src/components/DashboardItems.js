@@ -60,6 +60,14 @@ function DashboardItems(props) {
     }
   };
 
+  //a stateful boolean to toggle filtering nsfw items/links
+  const [nsfwFilter, setNsfwFilter] = useState(false);
+
+  //a function to toggle the nsfw filter
+  const toggleNsfwFilter = () => {
+    setNsfwFilter(!nsfwFilter);
+  };
+
   return (
     <>
       {itemsError && (
@@ -70,20 +78,25 @@ function DashboardItems(props) {
       <Paper className={classes.paperItems}>
         <Box
           display="flex"
-          justifyContent="space-between"
+          justifyContent="center"
+          gridGap={"40px"}
           alignItems="center"
           padding={2}
         >
-          <Typography variant="h5">Listings</Typography>
+          <Typography variant="h5">My Links</Typography>
           <Button
             variant="contained"
             size="medium"
             color="primary"
             onClick={() => setCreatingItem(true)}
           >
-            Add Listing
+            Add Link
           </Button>
         </Box>
+        <Button onClick={toggleNsfwFilter}>
+          {nsfwFilter ? "Show NSFW" : "Hide NSFW"}
+        </Button>
+
         <Divider />
 
         {(itemsStatus === "loading" || itemsAreEmpty) && (
@@ -91,74 +104,188 @@ function DashboardItems(props) {
             {itemsStatus === "loading" && <CircularProgress size={32} />}
 
             {itemsStatus !== "loading" && itemsAreEmpty && (
-              <>Nothing yet. Click the button to add your first item.</>
+              <>Nothing yet. Click the button to add your first link.</>
             )}
           </Box>
         )}
 
         {itemsStatus !== "loading" && items && items.length > 0 && (
-          <List disablePadding={true}>
-            {items.map((item, index) => (
-              <ListItem
-                key={index}
-                divider={index !== items.length - 1}
-                className={item.featured ? classes.featured : ""}
-              >
-                <Box
-                  sx={{
-                    p: 1,
-                    width: "90%",
-                  }}
-                >
-                  {/*Item Text Starts*/}
-                  <ListItemText
-                    primaryTypographyProps={{ style: { fontSize: "1.1rem" } }}
-                  >
-                    {item.name}
-                    {item.url && (
-                      <>
-                        {" - "}
-                        <Link
-                          target={"_blank"}
-                          rel="noreferrer"
-                          href={item.url}
+          <>
+            <List disablePadding={true}>
+              {nsfwFilter
+                ? items.map((item, index) => (
+                    <ListItem
+                      key={index}
+                      divider={index !== items.length - 1}
+                      className={item.featured ? classes.featured : ""}
+                    >
+                      <Box
+                        sx={{
+                          p: 1,
+                          width: "90%",
+                        }}
+                      >
+                        {/*Item Text Starts*/}
+                        <ListItemText
+                          primaryTypographyProps={{
+                            style: { fontSize: "1.2rem", fontWeight: "900" },
+                          }}
                         >
-                          {item.url}
-                        </Link>
-                      </>
-                    )}
-                  </ListItemText>
+                          {item.name}{" "}
+                          {item.sfw && (
+                            <span style={{ color: "green", fontSize: "0.7em" }}>
+                              (SFW)
+                            </span>
+                          )}
+                          {!item.sfw && (
+                            <span style={{ color: "red", fontSize: "0.7em" }}>
+                              (NSFW)
+                            </span>
+                          )}
+                        </ListItemText>
+                        {/*Item Text Ends*/}
+                        {/*Item Secondary Action Starts*/}
+                        <ListItemSecondaryAction>
+                          {canUseStar && (
+                            <IconButton
+                              edge="end"
+                              aria-label="star"
+                              onClick={() => handleStarItem(item)}
+                            >
+                              <StarIcon
+                                className={
+                                  item.featured ? classes.starFeatured : ""
+                                }
+                              />
+                            </IconButton>
+                          )}
+                          <IconButton
+                            edge="end"
+                            aria-label="edit"
+                            onClick={() => setUpdatingItemId(item.id)}
+                          >
+                            <EditIcon />
+                          </IconButton>
+                          <IconButton
+                            edge="end"
+                            aria-label="delete"
+                            onClick={() => deleteItem(item.id)}
+                          >
+                            <DeleteIcon />
+                          </IconButton>
+                        </ListItemSecondaryAction>
+                        {/*Item Secondary Action Ends*/}
+                      </Box>
+                      {/*Item Link Starts*/}
+                      <Link
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener"
+                        underline="none"
+                      >
+                        <Box
+                          sx={{
+                            p: 1,
+                            width: "10%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        ></Box>
+                      </Link>
+                      {/*Item Link Ends*/}
+                    </ListItem>
+                  ))
+                : items
+                    .filter((item) => item.sfw)
+                    .map((item, index) => (
+                      <ListItem
+                        key={index}
+                        divider={index !== items.length - 1}
+                        className={item.featured ? classes.featured : ""}
+                      >
+                        <Box
+                          sx={{
+                            p: 1,
+                            width: "90%",
+                          }}
+                        >
+                          {/*Item Text Starts*/}
+                          <ListItemText
+                            primaryTypographyProps={{
+                              style: { fontSize: "1.2rem", fontWeight: "900" },
+                            }}
+                          >
+                            {item.name}{" "}
+                            {item.sfw && (
+                              <span
+                                style={{ color: "green", fontSize: "0.7em" }}
+                              >
+                                (SFW)
+                              </span>
+                            )}
+                            {!item.sfw && (
+                              <span style={{ color: "red", fontSize: "0.7em" }}>
+                                (NSFW)
+                              </span>
+                            )}
+                          </ListItemText>
+                          {/*Item Text Ends*/}
+                          {/*Item Secondary Action Starts*/}
+                          <ListItemSecondaryAction>
+                            {canUseStar && (
+                              <IconButton
+                                edge="end"
+                                aria-label="star"
+                                onClick={() => handleStarItem(item)}
+                              >
+                                <StarIcon
+                                  className={
+                                    item.featured ? classes.starFeatured : ""
+                                  }
+                                />
+                              </IconButton>
+                            )}
+                            <IconButton
+                              edge="end"
+                              aria-label="edit"
+                              onClick={() => setUpdatingItemId(item.id)}
+                            >
+                              <EditIcon />
+                            </IconButton>
+                            <IconButton
+                              edge="end"
+                              aria-label="delete"
+                              onClick={() => deleteItem(item.id)}
+                            >
+                              <DeleteIcon />
+                            </IconButton>
+                          </ListItemSecondaryAction>
+                          {/*Item Secondary Action Ends*/}
+                        </Box>
+                        {/*Item Link Starts*/}
+                        <Link
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener"
+                          underline="none"
+                        >
+                          <Box
+                            sx={{
+                              p: 1,
+                              width: "10%",
+                              display: "flex",
+                              justifyContent: "center",
 
-                  <ListItemText>{item.description}</ListItemText>
-                  {/*Item Text End*/}
-                </Box>
-                <Box sx={{ width: "auto" }}>
-                  <IconButton
-                    edge="end"
-                    aria-label="star"
-                    onClick={() => handleStarItem(item)}
-                    className={item.featured ? classes.starFeatured : ""}
-                  >
-                    <StarIcon />
-                  </IconButton>
-                  <IconButton
-                    edge="end"
-                    aria-label="update"
-                    onClick={() => setUpdatingItemId(item.id)}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                  <IconButton
-                    edge="end"
-                    aria-label="delete"
-                    onClick={() => deleteItem(item.id)}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                </Box>
-              </ListItem>
-            ))}
-          </List>
+                              alignItems: "center",
+                            }}
+                          ></Box>
+                        </Link>
+                        {/*Item Link Ends*/}
+                      </ListItem>
+                    ))}
+            </List>
+          </>
         )}
       </Paper>
       {creatingItem && <EditItemModal onDone={() => setCreatingItem(false)} />}

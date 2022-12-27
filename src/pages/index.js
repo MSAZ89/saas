@@ -16,8 +16,8 @@ function IndexPage(props) {
         size="large"
         bgImage="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1600&h=800&q=80"
         bgImageOpacity={0.3}
-        title="Your landing page title here"
-        subtitle="This landing page is perfect for showing off your awesome product and driving people to sign up for a paid plan."
+        title="Linkbox"
+        subtitle="Store your favorite links in one place."
         buttonText="Get Started"
         buttonColor="default"
         buttonPath="/pricing"
