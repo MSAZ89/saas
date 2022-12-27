@@ -171,32 +171,26 @@ function Footer(props) {
                   <ListItem
                     button={true}
                     component="a"
-                    href="https://twitter.com/divjoy"
+                    href="https://twitter.com/"
                     target="_blank"
                     rel="noreferrer"
                     className={classes.listItem}
                   >
                     <ListItemIcon className={classes.socialIcon}>
-                      <img
-                        src="https://uploads.divjoy.com/icon-twitter.svg"
-                        alt="Facebook"
-                      />
+                      <img src="#" alt="Facebook" />
                     </ListItemIcon>
                     <ListItemText>Twitter</ListItemText>
                   </ListItem>
                   <ListItem
                     button={true}
                     component="a"
-                    href="https://facebook.com/DivjoyOfficial"
+                    href="https://facebook.com/"
                     target="_blank"
                     rel="noreferrer"
                     className={classes.listItem}
                   >
                     <ListItemIcon className={classes.socialIcon}>
-                      <img
-                        src="https://uploads.divjoy.com/icon-facebook.svg"
-                        alt="Facebook"
-                      />
+                      <img src="#" alt="Facebook" />
                     </ListItemIcon>
                     <ListItemText>Facebook</ListItemText>
                   </ListItem>
@@ -209,10 +203,7 @@ function Footer(props) {
                     className={classes.listItem}
                   >
                     <ListItemIcon className={classes.socialIcon}>
-                      <img
-                        src="https://uploads.divjoy.com/icon-instagram.svg"
-                        alt="Facebook"
-                      />
+                      <img src="#" />
                     </ListItemIcon>
                     <ListItemText>Instagram</ListItemText>
                   </ListItem>
